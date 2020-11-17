@@ -4,13 +4,20 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// require('@babel/polyfill')
+
+const isProd = process.env.NODE_ENV === 'productions'
+const isDev = !isProd
+
+const filename = (ext) =>
+  isDev ? `bundle.[chunkhash].${ext}` : `bundle.${ext}`
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: './index.js',
+  entry: ['@babel/polyfill', './index.js'],
   output: {
-    filename: 'bundel.[chunkhash].js',
+    filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
@@ -20,7 +27,10 @@ module.exports = {
       '@core': path.resolve(__dirname, 'src/core'),
     },
   },
-  devtool: 'eval-source-map',
+  devtool: isDev ? 'source-map' : false,
+  devServer: {
+    port: 5000,
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
@@ -35,7 +45,7 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: 'bundel.[chunkhash].css',
+      filename: filename('css'),
     }),
   ],
   module: {
