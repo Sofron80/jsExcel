@@ -4,9 +4,9 @@
   "description": "javascript excel cource",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "webpack serve --open browser.exe",
+    "dev": "cross-env NODE_ENV=development webpack serve",
     "start": "webpack ",
-    "build": "webpack --mode production"
+    "build": "cross-env NODE_ENV=productions webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Sofron80/jsExcel#readme",
   "private": true,
+  "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
@@ -31,6 +32,7 @@
     "babel-loader": "^8.2.1",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.3.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^5.0.1",
     "eslint": "^7.13.0",
     "eslint-config-google": "^0.14.0",
