@@ -44,8 +44,9 @@ module.exports = {
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
-    port: 5000,
+    open: true,
   },
+
   plugins: [
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
