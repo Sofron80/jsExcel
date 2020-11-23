@@ -25,6 +25,7 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-syntax-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.1",
@@ -45,6 +46,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "normalize.css": "^8.0.1"
   }
 }
