@@ -14,7 +14,7 @@ export class Excel {
       // // DEBUG
       // if (component.name) {
       //   window['c' + component.name] = component
-      // }
+      // }fff
 
       $el.html(component.toHTML())
       $root.append($el)
