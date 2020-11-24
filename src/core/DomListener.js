@@ -15,12 +15,18 @@ export class DomListener {
       if (!this[method]) {
         throw new Error(`Метод ${method} не реализован в ${this.name} `)
       }
-
-      this.$root.on(list, this[method].bind(this))
+      this[method] = this[method].bind(this)
+      this.$root.on(list, this[method])
     })
   }
 
-  removeDOMListeners() {}
+  removeDOMListeners() {
+    this.listeners.forEach(list => {
+      const method = getMethodName(list)
+
+      this.$root.off(list, this[method])
+    })
+  }
 }
 
 function getMethodName(eventName) {

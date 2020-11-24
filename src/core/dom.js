@@ -17,6 +17,9 @@ class Dom {
   on(eventType, calback) {
     this.$el.addEventListener(eventType, calback)
   }
+  off(eventType, calback) {
+    this.$el.removeEventListener(eventType, calback)
+  }
   append(node) {
     if (node instanceof Dom) {
       node = node.$el
