@@ -21,7 +21,7 @@ export function resizeHandler(e, $root) {
       value = coords.width + delta
       $resizer.css({ right: -delta + 'px' })
     } else {
-      const delta = e.pageY - coords.bottom
+      const delta = e.pageY - coords.bottom - window.pageYOffset
       value = coords.height + delta
       $resizer.css({ bottom: -delta + 'px' })
     }
